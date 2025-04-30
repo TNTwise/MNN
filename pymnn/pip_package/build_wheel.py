@@ -33,4 +33,4 @@ if __name__ == '__main__':
         os.putenv('DISTUTILS_USE_SDK', '1')
         os.putenv('MSSdk', '1')
         comm_args += ' --x86' if args.x86 else ''
-    os.system('python setup.py bdist_wheel %s' % comm_args)
+    os.system('python setup.py bdist_wheel %s' % comm_args + "opencl")

@@ -65,8 +65,8 @@ package_name = 'MNN'
 USE_INTERNAL = False
 USE_TRT      = False
 USE_CUDA     = False
-USE_OPENCL   = False
-USE_VULKAN   = False
+USE_OPENCL   = True
+USE_VULKAN   = True
 USE_RENDER   = False
 
 if args.deps != None:
@@ -168,7 +168,7 @@ def configure_extension_build():
         ]
         if check_env_flag('WERROR'):
             extra_compile_args.append('-Werror')
-    extra_compile_args += ['-DPYMNN_EXPR_API', '-DPYMNN_OPENCV_API', '-DPYMNN_AUDIO_API']
+    extra_compile_args += ['-DPYMNN_EXPR_API', '-DPYMNN_OPENCV_API', '-DPYMNN_AUDIO_API', '-DMNN_VULKAN=ON', '-DMNN_VULKAN_IMAGE=OFF' '-DMNN_OPENCL=ON']
     if has_numpy:
         extra_compile_args += ['-DPYMNN_NUMPY_USABLE']
     if IS_LINUX and USE_INTERNAL:
